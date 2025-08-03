@@ -1,7 +1,6 @@
 # ASP.NET Core Web API with Entity Framework Core
 
-@Author: Suaeb Ahmed
-@Date: 2025-08-03
+@Author: Suaeb Ahmed @Date: 2025-08-03
 
 Commend to create migration and update database
 ```
