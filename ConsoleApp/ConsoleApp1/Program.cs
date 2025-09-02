@@ -4,10 +4,14 @@ namespace ConsoleApp1
 {
     class MethodInCSharp
     {
-        public MethodInCSharp()
+        public MethodInCSharp(int x)
         {
             Func<int, int> square = delegate (int x) { return x * x; };
             Console.WriteLine(square(10));
+            if(x > 10) throw new Exception("x should be less than or equal to 10");
+
+            Console.WriteLine("MethodInCSharp instance created.");
+
         }
     }
 
@@ -35,7 +39,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             //var lambda = new LambdaExpressionAndAnonymousFun();
-            var md = new MethodInCSharp();
+            var md = new MethodInCSharp(110);
             var honda = new Honda();
             Console.WriteLine($"Honda top speed: {honda.GetTopSpeed()} mph");
 
