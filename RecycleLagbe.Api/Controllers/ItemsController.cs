@@ -2,6 +2,7 @@
 using WebAPI.Models;
 using WebAPI.Models.DTO;
 using WebAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI.Controllers
 {
@@ -15,39 +16,32 @@ namespace WebAPI.Controllers
             _context = context;
         }
 
-        //Get all items
-        //Get: https://localhost:7051/api/items
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<ActionResult<IEnumerable<ItemDto>>> GetAll()
         {
-            var items = _context.Items.ToList();
-            //Map Domain Models to DTOs
-            var itemDto = new List<ItemDto>();
-            foreach (var item in items)
-            {
-                itemDto.Add(new ItemDto
+            // Fetch all items and project directly to DTO to avoid tracking overhead
+            var items = await _context.Items
+                .AsNoTracking()
+                .Select(item => new ItemDto
                 {
                     Id = item.Id,
                     Name = item.Name,
                     Category = item.Category,
                     Price = item.Price
-                });
-            }
-            // return DTOs
-            return Ok(itemDto);
-            //return Ok(items);
+                })
+                .ToListAsync();
+
+            return Ok(items);
         }
-        //Get item by id
-        //Get: https://localhost:7051/api/items/{id}
+
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var item = _context.Items.Find(id);
+            var item = await _context.Items.FindAsync(id);
             if (item == null)
             {
                 return NotFound("No record found against this id");
             }
-            //Map/convert Domain Model to DTO
             var itemDTO = new ItemDto
             {
                 Id = item.Id,
@@ -57,27 +51,27 @@ namespace WebAPI.Controllers
             };
             return Ok(itemDTO);
         }
-        //POST item
-        //POST: https://localhost:7051/api/items
+
         [HttpPost]
-        public IActionResult Post([FromBody] AddItemRequestDTo AddItemRequestDTo)
+        [Route("create")]
+        public async Task<IActionResult> Post([FromBody] AddItemRequestDTo AddItemRequestDTo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            //Map/convert DTO to Domain Model
-            Item itemDomainModel = new()
+
+            var itemDomainModel = new Item
             {
                 Name = AddItemRequestDTo.Name,
                 Category = AddItemRequestDTo.Category,
                 Price = AddItemRequestDTo.Price
             };
-            _context.Items.Add(itemDomainModel);
-            _context.SaveChanges();
 
-            //Map/convert Domain Model to DTO
-            ItemDto itemDto = new()
+            _context.Items.Add(itemDomainModel);
+            await _context.SaveChangesAsync();
+
+            var itemDto = new ItemDto
             {
                 Id = itemDomainModel.Id,
                 Name = itemDomainModel.Name,
@@ -86,7 +80,5 @@ namespace WebAPI.Controllers
             };
             return CreatedAtAction(nameof(GetById), new { id = itemDto.Id }, itemDto);
         }
-
-
     }
 }

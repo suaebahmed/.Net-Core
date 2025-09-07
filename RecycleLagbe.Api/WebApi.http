@@ -1,0 +1,26 @@
+@root = https://localhost:7051
+
+
+### Root
+GET {{root}}/
+Accept: application/json
+###
+
+### Get All Products
+GET {{root}}/api/items
+Accept: application/json
+###
+
+### Get 1 item
+GET {{root}}/api/items/2
+Accept: application/json
+### 
+
+### Create a New Product
+POST {{root}}/api/items/create
+Content-Type: application/json
+{
+    "Name": "Introduction of c#",
+    "Price": 299,
+    "Category": "Books"
+}

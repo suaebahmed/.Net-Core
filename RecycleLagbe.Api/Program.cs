@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 // dependency injection for DbContext
 builder.Services.AddDbContext<ItemsDbContext>(options => 
-options.UseSqlServer("Server=.;Database=CRUD;Trusted_Connection=True;TrustServerCertificate=True"));
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
