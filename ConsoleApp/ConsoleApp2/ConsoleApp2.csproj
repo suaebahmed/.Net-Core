@@ -43,11 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\EmployeeCommands.cs" />
+    <Compile Include="Commands\IEmployeeCommands.cs" />
+    <Compile Include="DTOs\EmployeeDTO.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\EmployeeQueries.cs" />
+    <Compile Include="Queries\IEmployeeQueries.cs" />
+    <Compile Include="Repositories\EmployeeQueriesRepository.cs" />
+    <Compile Include="Repositories\EmployeeCommandsRepository.cs" />
+    <Compile Include="Repositories\IEmployeeQuerisRepository.cs" />
+    <Compile Include="Repositories\IEmployeeCommandsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
