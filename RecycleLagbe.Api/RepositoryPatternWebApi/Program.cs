@@ -1,0 +1,49 @@
+using Microsoft.EntityFrameworkCore;
+using RepositoryPatternWebApi.Data;
+
+namespace RepositoryPatternWebApi
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+
+            //Register the Services
+            builder.Services.AddControllers()
+             .AddJsonOptions(options =>
+             {
+                 // Disabled Camel Case in JSON serialization and deserialization
+                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
+             });
+
+            // Register ECommerceDbContext
+            // By default it will be a Scopped Service
+            builder.Services.AddDbContext<ECommerceDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDBConnection"))
+            );
+
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseAuthorization();
+
+            app.MapControllers();
+
+            app.MapGet("/", () => "Hello World, Ecommerce Web API Is Running!");
+
+            app.Run();
+        }
+    }
+}

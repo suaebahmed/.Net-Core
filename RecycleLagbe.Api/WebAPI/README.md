@@ -14,15 +14,6 @@ DTOs are typically data-only, whereas Domain Models contain business logic. View
 DTOs are used for inter-layer communication, Domain Models represent the core business, and View Models are tailored for UI presentation.
 
 
-# Design Pattern
-- CQRS | (Commands, Query, Responsibility and Segregation)
-	- Separate Commands and Queries
-	- 
-- Repository 
-	- Repository Design Pattern separates the data access logic and maps it to the entities in the business logic
-	- 
-- Factory 
-
 # Controller Action Return Types
 
 - Primitive or Complex Types: Use for simple, straightforward responses where detailed control over the response is not needed.
@@ -35,21 +26,63 @@ DTOs are used for inter-layer communication, Domain Models represent the core bu
 - Task<IActionResult> or Task<ActionResult<T>>: These two return types are used for asynchronous action methods that perform I/O-bound operations like database calls, file I/O, or external service calls.
 
 
-# Data binding
+# Model (Data) binding
 
 Query Strings: Parameters appended to the URL.
-Route Data: Parameters defined in the URL path.
-Form Data: Data submitted via HTML forms (typically for POST requests).
-Request Body: Payload data, often in JSON or XML format (commonly for POST, PUT, or PATCH requests).
-Headers: Custom data sent within HTTP headers.
+[FromQuery] int id
 
-## Why Is Model Binding Important is ASP.NET core Web API
+Route Data: Parameters defined in the URL path.
+[FromRoute] int id
+
+Form Data: Data submitted via HTML forms (typically for POST requests).
+[FromForm] IFromFile file
+
+Request Body: Payload data, often in JSON or XML format (commonly for POST, PUT, or PATCH requests).
+[FromBody] request anoDTO
+
+Headers: Custom data sent within HTTP headers.
+[FromHeader] string customHeader
+
+
+### Why Is Model Binding Important is ASP.NET core Web API
 
 - 1. Simplified Data Handling
 - 2. Maintainability & Supports Multiple Data Source
 - 3. Validation Integration: easily integrate validation logic, 
 
 Use data annotations to define validation rules:
-	
+
+```csharp
+[Required(ErrorMessage = "Name is required.")]
+public string Name { get; set; }
+```
 
 
+# Design Pattern
+- Without Design Pattern
+	- Tight Coupling
+	- Code Duplication
+	- Hard to Maintain
+	- Poor Scalability
+	- Inconsistent Codebase
+	- Difficult Testing
+	- Lack of Best Practices
+- CQRS | (Commands, Query, Responsibility and Segregation)
+	- Separate Commands and Queries
+	- 
+- Repository 
+	- Repository Design Pattern separates the data access logic and maps it to the entities in the business logic
+	- 
+- Factory 
+
+
+# Introduction to Repository Pattern in ASP.NET Core Web API
+
+### Data Access Techniques:
+ - ADO.NET Core
+ - Dapper
+	- Dapper is a popular lightweight micro-ORM (Object-Relational Mapper) that builds on top of ADO.NET to simplify data access while preserving performance.
+	- Dapper maps SQL query results directly to strongly typed objects
+ - EF Core
+
+# 

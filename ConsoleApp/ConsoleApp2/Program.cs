@@ -7,6 +7,7 @@ using ConsoleApp2.Commands;
 using ConsoleApp2.Repositories;
 using ConsoleApp2.Queries;
 
+// CQRS Pattern - Command Query Responsibility Segregation
 namespace ConsoleApp2
 {
     internal class Program
@@ -26,11 +27,9 @@ namespace ConsoleApp2
             });
             Console.WriteLine("Employee data saved successfully.");
 
-            // Query employee data
             var EmployeeQueries = new EmployeeQueries(new EmployeeQueriesRepository());
             var employee = EmployeeQueries.FindByID(1);
             Console.WriteLine($"Employee Details: ID={employee.Id}, Name={employee.FullName}, Address={employee.Address}, Age={employee.Age}");
-
 
         }
     }

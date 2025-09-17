@@ -2,6 +2,20 @@
 
 @Author: Suaeb Ahmed @Date: 2025-08-03
 
+
+# Migration
+
+Add-Migration is a Package Manager Console (PMC) command, not a generic PowerShell/terminal command. You likely ran it in a normal terminal.
+Options:
+1.	Use PMC in Visual Studio
+•	View > Other Windows > Package Manager Console
+•	Set Default project to RecycleLagbe.Api (the one containing ItemsDbContext)
+•	Run: Add-Migration Mig1
+2.	Or use CLI instead of PMC
+•	Install tools (once): dotnet tool install --global dotnet-ef
+•	Then run in the WebAPI project folder: dotnet ef migrations add Mig1
+
+
 Commend to create migration and update database
 ```
 Add-Migration "initial migration"
