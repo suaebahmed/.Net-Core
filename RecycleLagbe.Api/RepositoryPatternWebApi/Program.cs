@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RepositoryPatternWebApi.Data;
+using RepositoryPatternWebApi.Repositories;
+using RepositoryPatternWebApi.Repositories.Implementations;
 
 namespace RepositoryPatternWebApi
 {
@@ -22,6 +24,13 @@ namespace RepositoryPatternWebApi
             builder.Services.AddDbContext<ECommerceDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDBConnection"))
             );
+
+
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

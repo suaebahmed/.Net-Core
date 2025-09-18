@@ -1,5 +1,8 @@
 # Data Model vs DTO
 
+DTOs (Data Transfer Objects) define the shape of data transfer between layers (usually between the backend and frontend). 
+Entities represent our database structure, but DTOs are designed for API contracts (input/output models).
+
 Data Models (e.g., Database Models):
 Purpose: Define the structure and relationships of data as it's stored in a database or other persistent storage.
 
