@@ -1,16 +1,32 @@
-@RepositoryPatternWebApi_HostAddress = https://localhost:7258
+@https = https://localhost:7258
+@http = http://localhost:5141
 
-GET {{RepositoryPatternWebApi_HostAddress}}/
+# Choose the base URL that matches the running profile (change to {{http}}, {{iisExpressHttps}}, or {{iisExpressHttp}} as needed)
+@base = {{https}}
 
 ###
+GET {{base}}/
 
-GET {{RepositoryPatternWebApi_HostAddress}}/api/products
+###
+GET {{base}}/api/products
 Accept: application/json
 
 ###
-
-
-GET {{RepositoryPatternWebApi_HostAddress}}/api/products/3
+POST {{base}}/api/products
 Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "Sample productm 9",
+  "Description": "Sample description",
+  "Price": 9999.99,
+  "CategoryId": 3,
+  "CategoryName": "BLL"
+}
 
 ###
+GET {{base}}/api/products/3
+Accept: application/json
+
+
+

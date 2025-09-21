@@ -1,6 +1,7 @@
 ﻿using RepositoryPatternWebApi.Data;
 using RepositoryPatternWebApi.Models;
 using Microsoft.EntityFrameworkCore;
+using RepositoryPatternWebApi.Validators;
 
 namespace RepositoryPatternWebApi.Repositories.Implementations
 {

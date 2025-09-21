@@ -1,8 +1,11 @@
 ﻿using System.Text.Json;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using RepositoryPatternWebApi.Data;
 using RepositoryPatternWebApi.DTOs;
 using RepositoryPatternWebApi.Models;
 using RepositoryPatternWebApi.Repositories;
+using RepositoryPatternWebApi.Validators;
 
 namespace RepositoryPatternWebApi.Controllers
 {
@@ -12,12 +15,14 @@ namespace RepositoryPatternWebApi.Controllers
     {
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IValidator<ProductDTO> _validationRules;
         private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(IProductRepository productRepository, ICategoryRepository categoryRepository, ILogger<ProductsController> logger)
+        public ProductsController(IProductRepository productRepository, ICategoryRepository categoryRepository, IValidator<ProductDTO> validationRules, ILogger<ProductsController> logger)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
+            _validationRules = validationRules;
             _logger = logger;
         }
 
@@ -65,12 +70,21 @@ namespace RepositoryPatternWebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromBody] ProductDTO dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            //ProductCreateDTOValidator validationRules = new ProductCreateDTOValidator(_categoryRepository); //manually creating the instance
+            //var validationResult = await validationRules.ValidateAsync(dto);
+            var validationResult = await _validationRules.ValidateAsync(dto);
 
-            bool categoryExists = await _categoryRepository.ExistsAsync(dto.CategoryId);
-            if (!categoryExists)
-                return BadRequest("Invalid CategoryId");
+            if (!validationResult.IsValid)
+            {
+                var errorResponse = validationResult.Errors.Select(e => new
+                {
+                    Field = e.PropertyName,
+                    Error = e.ErrorMessage
+                });
+
+                _logger.LogError("Validation failed: {Errors}", JsonSerializer.Serialize(validationResult.Errors));
+                return BadRequest(errorResponse);
+            }
 
             var product = new Product
             {

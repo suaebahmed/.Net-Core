@@ -1,7 +1,10 @@
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using RepositoryPatternWebApi.Data;
+using RepositoryPatternWebApi.DTOs;
 using RepositoryPatternWebApi.Repositories;
 using RepositoryPatternWebApi.Repositories.Implementations;
+using RepositoryPatternWebApi.Validators;
 
 namespace RepositoryPatternWebApi
 {
@@ -24,6 +27,9 @@ namespace RepositoryPatternWebApi
             builder.Services.AddDbContext<ECommerceDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDBConnection"))
             );
+
+            // For fluent validation
+            builder.Services.AddScoped<IValidator<ProductDTO>, ProductCreateDTOValidator>();
 
 
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
