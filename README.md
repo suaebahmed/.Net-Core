@@ -37,3 +37,17 @@ In .NET 8, the project structure is simpler and more intuitive. Here’s an over
 - DTOs(Data Transfer Objects) and Domain Model
 - and etc.
 
+
+# Configuration a Solution in .NET
+
+1. Creating Soluion:
+
+```bash
+    dotnet new sln --name MySolution
+```
+
+2. Add project in solution
+
+```bash
+	dotnet sln add .\RecycleLagbe.Api\RepositoryPatternWebApi\RepositoryPatternWebApi.csproj
+```

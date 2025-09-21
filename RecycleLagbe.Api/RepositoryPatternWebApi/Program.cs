@@ -27,9 +27,9 @@ namespace RepositoryPatternWebApi
 
 
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-            builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 
             builder.Services.AddEndpointsApiExplorer();
@@ -37,19 +37,17 @@ namespace RepositoryPatternWebApi
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configure the HTTP request pipeline. Middleware!!
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
+            // MAP controller and get request
             app.MapControllers();
-
             app.MapGet("/", () => "Hello World, Ecommerce Web API Is Running!");
 
             app.Run();

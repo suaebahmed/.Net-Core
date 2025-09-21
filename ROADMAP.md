@@ -1,48 +1,4 @@
-# Installation and Setup
-- Install .NET SDK from [Microsoft's official site](https://dotnet.microsoft.com/download)
-- Install Visual Studio Code from [Visual Studio Code's official site](https://code.visualstudio.com/)
-
-
-# Beginner's Guide to C# and .NET
-    - C# Foundations: LINQ, Async/Await
-    - .NET Basics – CLI, Dependency Injection, Configuration
-    
-# Intermediate Topics
-    - ASP.NET Core: Middleware, Authentication
-    - Database Access: Entity Framework Core, Migrations
-
-### Unit Testing: xUnit, Moq, Integration Tests
-
-
-Great! Here's a structured plan to help you learn these .NET basics step by step:
-
----
-
-### ✅ 1. **.NET CLI (Command Line Interface)**
-
-**Goal:** Understand how to create, build, run, and manage .NET projects using the CLI.
-
-#### Key Commands:
-
-* `dotnet new console -n MyApp` – Create a new console project.
-* `dotnet build` – Compile the project.
-* `dotnet run` – Run the app.
-* `dotnet add package <package-name>` – Add NuGet package.
-* `dotnet restore` – Restore dependencies.
-* `dotnet clean` – Clean the build output.
-
-📘 Learn:
-
-* [.NET CLI Docs](https://learn.microsoft.com/en-us/dotnet/core/tools/)
-
-🧪 Practice:
-
-* Create and run a simple “Hello World” console app.
-* Add a NuGet package (e.g., `Newtonsoft.Json`) using CLI.
-
----
-
-### ✅ 2. **Dependency Injection (DI)**
+# ✅ 2. **Dependency Injection (DI)**
 
 **Goal:** Understand how services are registered and used through DI.
 
@@ -78,55 +34,11 @@ public class MyController
 * Create an interface and implement a service.
 * Inject it into a controller or class and use it.
 
----
-
-### ✅ 3. **Configuration in .NET**
-
-**Goal:** Understand how to load and use configuration from `appsettings.json`, environment variables, etc.
-
-#### Key Files:
-
-* `appsettings.json`
-* `appsettings.Development.json`
-
-#### Example:
-
-```json
-// appsettings.json
-{
-  "MyAppSettings": {
-    "SiteName": "My Cool App"
-  }
-}
-```
-
-```csharp
-builder.Services.Configure<MyAppSettings>(
-    builder.Configuration.GetSection("MyAppSettings"));
-```
-
-```csharp
-public class MyAppSettings {
-    public string SiteName { get; set; }
-}
-```
-
-📘 Learn:
-
-* [.NET Configuration Guide](https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration)
-
-🧪 Practice:
-
-* Create an `appsettings.json`
-* Bind a POCO class with it and use it in your app.
-
----
-
 Great! Let’s dive into the **core concepts of Dependency Injection (DI)** in .NET:
 
 ---
 
-## 🔁 **Service Lifetimes in .NET**
+# 🔁 **Service Lifetimes in .NET**
 
 When you register a service with DI in .NET, you must choose a **lifetime** that determines:
 
@@ -260,10 +172,6 @@ public class NotificationManager
 Let me know if you want to build a small project (like a user notification service) to see these in action — or if you'd like diagrams or interview-style questions to test yourself.
 
 
-# Data Transfer Object
-- DTOs are simple classes that represent data structures
-- Used to transfer data between layers (e.g., from API to service)
-
 
 # LINQ
 - LINQ (Language Integrated Query) allows querying collections in a readable way
@@ -293,7 +201,7 @@ For example, LINQ to SQL provider will convert the LINQ queries to SQL statement
 }
 ```
 
-# LINQ queries can be written in two ways:
+### LINQ queries can be written in two ways:
 - 1. Query Syntax: 
 ```csharp
 var query = from user in dbContext.Users

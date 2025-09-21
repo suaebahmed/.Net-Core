@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 using RepositoryPatternWebApi.DTOs;
 using RepositoryPatternWebApi.Models;
 using RepositoryPatternWebApi.Repositories;
@@ -11,11 +12,13 @@ namespace RepositoryPatternWebApi.Controllers
     {
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(IProductRepository productRepository, ICategoryRepository categoryRepository)
+        public ProductsController(IProductRepository productRepository, ICategoryRepository categoryRepository, ILogger<ProductsController> logger)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -24,7 +27,7 @@ namespace RepositoryPatternWebApi.Controllers
             var products = await _productRepository.GetAllAsync();
 
             var dtos = products.Select(p => new ProductDTO
-            {
+            {  
                 ProductId = p.ProductId,
                 Name = p.Name,
                 Description = p.Description,
@@ -32,6 +35,8 @@ namespace RepositoryPatternWebApi.Controllers
                 CategoryId = p.CategoryId,
                 CategoryName = p.Category?.Name
             });
+
+            _logger.LogInformation("Number of products: {Count}", dtos.ToList().Count);
 
             return Ok(dtos);
         }
@@ -51,6 +56,8 @@ namespace RepositoryPatternWebApi.Controllers
                 CategoryId = p.CategoryId,
                 CategoryName = p.Category?.Name
             };
+
+            _logger.LogWarning("Received product DTO: {ProductJson}", JsonSerializer.Serialize(dto));
 
             return Ok(dto);
         }

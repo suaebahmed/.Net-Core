@@ -6,12 +6,13 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            //var dataAbstraction = new DataAbstraction();
+            var dataAbstraction = new DataAbstraction();
             //var lambda = new LambdaExpressionAndAnonymousFun();
             //var genericClass = new LearningGenerics();
 
-            //var delegatesAndEvents = new DelegatesAndEvents();
 
+            //var delegatesAndEvents = new DelegatesAndEvents();
+            var chain = new ChainMethods();
         }
     }
 }

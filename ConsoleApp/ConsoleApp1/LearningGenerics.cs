@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Security.AccessControl;
 
+namespace ConsoleApp1;
+
 public class LearningGenerics
 {
 	public LearningGenerics()
