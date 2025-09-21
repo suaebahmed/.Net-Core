@@ -1,18 +1,19 @@
 ﻿using System;
+using ConsoleApp1.Coupling;
 
-namespace ConsoleApp1
+namespace ConsoleApp1;
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var dataAbstraction = new DataAbstraction();
-            //var lambda = new LambdaExpressionAndAnonymousFun();
-            //var genericClass = new LearningGenerics();
+        //var dataAbstraction = new DataAbstraction();
+        //var lambda = new LambdaExpressionAndAnonymousFun();
+        //var genericClass = new LearningGenerics();
+        //var loose = new LooseCoupling();
+        var tight = new TightCoupling();
 
 
-            //var delegatesAndEvents = new DelegatesAndEvents();
-            var chain = new ChainMethods();
-        }
+        //var delegatesAndEvents = new DelegatesAndEvents();
+        //var chain = new ChainMethods();
     }
 }
