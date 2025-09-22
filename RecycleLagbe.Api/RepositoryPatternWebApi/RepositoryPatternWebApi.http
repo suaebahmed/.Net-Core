@@ -1,3 +1,4 @@
+@RepositoryPatternWebApi_HostAddress = https://localhost:7258
 @https = https://localhost:7258
 @http = http://localhost:5141
 
@@ -28,5 +29,18 @@ Content-Type: application/json
 GET {{base}}/api/products/3
 Accept: application/json
 
+###
 
+@id=20
+DELETE {{RepositoryPatternWebApi_HostAddress}}/api/products/{{id}}
 
+###
+
+PUT {{RepositoryPatternWebApi_HostAddress}}/api/products/{{id}}
+Content-Type: application/json
+
+{
+  //ProductDTO
+}
+
+###
