@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPatternWebApi", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecycleLagbe.Function", "RecycleLagbe.Function\RecycleLagbe.Function.csproj", "{8D240580-E726-E8AD-805A-C7EF8A4107FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomQouteService", "RecycleLagbe.Infra\RandomQoutesService\RandomQouteService.csproj", "{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,18 @@ Global
 		{8D240580-E726-E8AD-805A-C7EF8A4107FB}.Release|x64.Build.0 = Release|Any CPU
 		{8D240580-E726-E8AD-805A-C7EF8A4107FB}.Release|x86.ActiveCfg = Release|Any CPU
 		{8D240580-E726-E8AD-805A-C7EF8A4107FB}.Release|x86.Build.0 = Release|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Debug|x64.Build.0 = Debug|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Debug|x86.Build.0 = Debug|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Release|x64.ActiveCfg = Release|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Release|x64.Build.0 = Release|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Release|x86.ActiveCfg = Release|Any CPU
+		{EA8A4C72-051D-4337-8AD7-F0FF45A8F63D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

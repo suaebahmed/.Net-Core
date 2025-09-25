@@ -1,19 +1,23 @@
 ﻿using System;
 using ConsoleApp1.Coupling;
+using ConsoleApp1.Json;
+using ConsoleApp1.LinqEssential;
 
 namespace ConsoleApp1;
 class Program
 {
     static void Main(string[] args)
     {
-        //var dataAbstraction = new DataAbstraction();
-        //var lambda = new LambdaExpressionAndAnonymousFun();
-        //var genericClass = new LearningGenerics();
-        //var loose = new LooseCoupling();
-        var tight = new TightCoupling();
+        //_ = new DataAbstraction();
+        //_ = new LambdaExpressionAndAnonymousFun();
+        //_ = new LearningGenerics();
+        //_ = new LooseCoupling();
+        //_ = new TightCoupling();
+        //_ = new JsonSerializeAndDeserialize();
+        _ = new EssentialLinq();
 
 
-        //var delegatesAndEvents = new DelegatesAndEvents();
-        //var chain = new ChainMethods();
+        //_ = new DelegatesAndEvents();
+        //_ = new ChainMethods();
     }
 }
