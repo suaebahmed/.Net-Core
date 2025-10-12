@@ -11,11 +11,21 @@ namespace ConsoleApp1.LinqEssential
     {
         public static void Collection()
         {
-            
+            // Distionary
+            Dictionary<string, string> car = new Dictionary<string, string>();
+            car.Add("Model", "Hyundai");
+            car.Add("Price", "36K");
+
+            // iterate through the car dictionary 
+            foreach (KeyValuePair<string, string> items in car)
+            {
+                Console.WriteLine("{0} : {1}", items.Key, items.Value);
+            }
 
         }
         public EssentialLinq()
         {
+            Collection();
             // select - JS map
             var numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             var evenNumbers = from num in numbers

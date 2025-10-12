@@ -1,7 +1,9 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+//using RandomService.NumberService;
 using RepositoryPatternWebApi.Data;
 using RepositoryPatternWebApi.DTOs;
+//using RepositoryPatternWebApi.Middleware;
 using RepositoryPatternWebApi.Repositories;
 using RepositoryPatternWebApi.Repositories.Implementations;
 using RepositoryPatternWebApi.Validators;
@@ -28,14 +30,15 @@ namespace RepositoryPatternWebApi
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDBConnection"))
             );
 
-            // For fluent validation
+            // builder.Services.AddSingleton<INumberService, NumberService>();
+            builder.Services.AddMemoryCache();
             builder.Services.AddScoped<IValidator<ProductDTO>, ProductCreateDTOValidator>();
-
 
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 
 
             builder.Services.AddEndpointsApiExplorer();
@@ -50,6 +53,8 @@ namespace RepositoryPatternWebApi
                 app.UseSwaggerUI();
             }
             app.UseHttpsRedirection();
+
+            //app.UseMiddleware<ExceptionMiddleware>();
             app.UseAuthorization();
 
             // MAP controller and get request

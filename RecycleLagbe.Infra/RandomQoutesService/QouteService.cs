@@ -2,9 +2,9 @@
 using System.Text;
 using System.Xml.Linq;
 using Newtonsoft.Json;
-using RandomQouteService.DTOs;
+using RandomService.DTOs;
 
-namespace RandomQouteService;
+namespace RandomService;
 public class QouteService
 {
     public class MyData

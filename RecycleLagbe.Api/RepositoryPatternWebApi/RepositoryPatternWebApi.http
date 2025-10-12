@@ -31,7 +31,7 @@ Accept: application/json
 
 ###
 
-@id=20
+@id=12
 DELETE {{RepositoryPatternWebApi_HostAddress}}/api/products/{{id}}
 
 ###
@@ -42,5 +42,27 @@ Content-Type: application/json
 {
   //ProductDTO
 }
+
+###
+# Dependency Injection types example
+
+GET {{base}}/api/randomService
+
+
+###
+# Location Controller
+
+{{base}}/api/location/countries
+
+
+###
+@id = 2
+{{base}}/api/location/states/{{id}}
+
+
+###
+
+{{base}}/api/location/cities/{{id}}
+
 
 ###

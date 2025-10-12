@@ -62,7 +62,7 @@ namespace RepositoryPatternWebApi.Controllers
                 CategoryName = p.Category?.Name
             };
 
-            _logger.LogWarning("Received product DTO: {ProductJson}", JsonSerializer.Serialize(dto));
+            //_logger.LogWarning("Received product DTO: {ProductJson}", JsonSerializer.Serialize(dto));
 
             return Ok(dto);
         }
@@ -127,7 +127,7 @@ namespace RepositoryPatternWebApi.Controllers
             _productRepository.Update(existing);
             await _productRepository.SaveAsync();
 
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("{id}")]
@@ -139,7 +139,7 @@ namespace RepositoryPatternWebApi.Controllers
             _productRepository.Delete(existing);
             await _productRepository.SaveAsync();
 
-            return NoContent();
+            return Ok();
         }
     }
 }

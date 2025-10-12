@@ -51,3 +51,20 @@ In .NET 8, the project structure is simpler and more intuitive. Here’s an over
 ```bash
 	dotnet sln add .\RecycleLagbe.Api\RepositoryPatternWebApi\RepositoryPatternWebApi.csproj
 ```
+
+
+# Clearn Architecture
+
+Key Principles:
+- Separation of Concerns: Different layers handle different responsibilities.
+- Dependency Inversion: Higher-level modules/policies should not depend on lower-level modules. Both should depend on abstractions.
+- Dependency Rule: Core dependencies must point inward.
+- Independence:
+	1. Framework Independence: The architecture should not depend on any specific framework.
+	2. Database Independence: The business logic should not depend on the database.
+	3. UI Independence: Can change from web to desktop without affecting the core logic.
+
+
+# Layers of Clean Architecture
+1. Entities: Core business objects.
+

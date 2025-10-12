@@ -1,0 +1,20 @@
+@HostAddress = http://localhost:5161
+
+POST {{HostAddress}}/api/create
+Accept: application/json
+Content-Type: application/json
+{
+    "url": "https://www.facebook.com/create?id=1234568910&name=SUAEB"
+}
+
+###
+@shortURLCode = 6aA
+
+GET {{HostAddress}}/api/{{shortURLCode}}
+
+###
+
+GET {{HostAddress}}/api/all
+
+
+###
