@@ -2,7 +2,8 @@
 {
     public class CounterService
     {
-        private long _counter = 100000; // Starting point for URL IDs
+        // Total unique possible: 62^7
+        private long _counter = 0;
        
         public long GetNextCount()
         {

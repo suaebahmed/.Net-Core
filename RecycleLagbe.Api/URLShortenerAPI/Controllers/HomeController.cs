@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using URLShortenerAPI.Data;
@@ -18,15 +16,22 @@ namespace URLShortenerAPI.Controllers
         {
             const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             long count = _counterService.GetNextCount();
-            string hash = "";
+            var hash = new System.Text.StringBuilder();
             while (count > 0)
             {
                 int length = chars.Length;
-                hash += chars[(int)(count % length)];
+                hash.Append(chars[(int)(count % length)]);
                 count /= 62;
             }
-            return hash;
+            while (hash.Length < 7)
+            {
+                // Pad with leading first digit/zero of 62 base number system.
+                hash.Append('a');
+            }
+            var reversed = new string(hash.ToString().Reverse().ToArray());
+            return reversed;
         }
+
         private CounterService _counterService;
         private URLShortenerDbContext _context;
 
