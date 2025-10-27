@@ -22,7 +22,7 @@ namespace URLShortenerAPI.Data
                {
                    Id = 1,
                    OriginalURL = "https://www.halalpay.com/create?id=1234568910&name=SUAEB",
-                   ShortenedURL = "https://www.tinyurl.com/A1XS23",
+                   ShortURLCode = "A1XS23",
                    CreatedAt = new DateTime(2024, 1, 1),
                    ClickCount = 10
                });

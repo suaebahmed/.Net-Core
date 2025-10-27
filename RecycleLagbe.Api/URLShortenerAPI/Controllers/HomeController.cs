@@ -25,7 +25,6 @@ namespace URLShortenerAPI.Controllers
             }
             while (hash.Length < 7)
             {
-                // Pad with leading first digit/zero of 62 base number system.
                 hash.Append('a');
             }
             var reversed = new string(hash.ToString().Reverse().ToArray());
@@ -50,7 +49,7 @@ namespace URLShortenerAPI.Controllers
             var URLMapping = new URL_Item
             {
                 OriginalURL = input.Url,
-                ShortenedURL = "https://www.tinyurl.com/" + GenerateShortCode(),
+                ShortURLCode = GenerateShortCode(),
                 ClickCount = 0
             };
 
@@ -64,7 +63,7 @@ namespace URLShortenerAPI.Controllers
         public async Task<IActionResult> GetAsync(string shortURLCode)
         {
             var obj = await _context.URL_Items
-                .Where(u => u.ShortenedURL.EndsWith("/" + shortURLCode))
+                .Where(u => u.ShortURLCode == shortURLCode)
                 .AsNoTracking()
                 .ToListAsync();
 
@@ -76,6 +75,7 @@ namespace URLShortenerAPI.Controllers
         [HttpGet("all")]
         public async Task<IActionResult> GetAllAsync()
         {
+            //TODO: mapped with output DTO
             var all = await _context.URL_Items
                 .AsNoTracking()
                 .ToListAsync();
