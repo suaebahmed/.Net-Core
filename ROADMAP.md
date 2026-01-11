@@ -217,4 +217,4 @@ var query = dbContext.Users
 ```
  - 3. Mixed Syntax (Query + Method)
 
- 
+ https://www.programiz.com/csharp-programming/dictionary
