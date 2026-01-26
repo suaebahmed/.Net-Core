@@ -34,7 +34,9 @@ class Program
     }
     static void Main(string[] args)
     {
-        Solve s = new Solve();
+        ObserverPattern observerPattern = new ObserverPattern();
+
+        //Solve s = new Solve();
         //_ = new DataAbstraction();
         //_ = new LambdaExpressionAndAnonymousFun();
         //_ = new LearningGenerics();
