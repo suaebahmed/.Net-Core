@@ -1,0 +1,28 @@
+
+# Top 5 Design Patterns for Interview:
+
+1. Singleton (Creational): Ensures a class has only one instance and provides a global point of access to it.
+2. Factory (Creational): Defines an interface for creating an object, but lets subclasses decide which class to instantiate.
+3. Observer (Behavioral): 
+	- Objects (observers) subscribe to an event. When the subject changes, it notifies all observers.
+4. Strategy (Behavioral): 
+	- Defines a family of algorithms, encapsulates each one,
+	- and makes them interchangeable.
+5. Builder (Creational):
+	- Separates the construction of a complex object from its representation, 
+	- allowing the same construction process to create different representations.
+
+# Other Frequently Asked Patterns
+
+- Adapter (Structural): Allows incompatible interfaces to work together.
+- Decorator (Structural): Dynamically adds behavior to an object without affecting others.
+- Facade (Structural): Provides a simplified interface to a complex set of classes.
+- Proxy (Structural): Controls access to an object, often used for lazy loading or logging.
+- State (Behavioral): Allows an object to change its behavior when its internal state changes. 
+
+
+### In Web-SDK and Hosted Fields, We used these patterns:
+- Factory Pattern: Used to create instances of Hosted Fields and Web-SDK components.
+- Proxy Pattern: Web-sdk class acts as a local proxy.
+- Facade Pattern: Provides a simplified interface to the complex underlying system of payment processing.
+- Observer Pattern

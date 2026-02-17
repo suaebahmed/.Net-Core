@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookStoresWebAPI.Data;
 
-public partial class BookStoresContext : DbContext
+public partial class BookStoresDBContext : DbContext
 {
-    public BookStoresContext()
+    public BookStoresDBContext()
     {
     }
 
-    public BookStoresContext(DbContextOptions<BookStoresContext> options)
+    public BookStoresDBContext(DbContextOptions<BookStoresDBContext> options)
         : base(options)
     {
     }
