@@ -5,6 +5,7 @@ using ConsoleApp1.Coupling;
 using ConsoleApp1.Json;
 using ConsoleApp1.LinqEssential;
 using ConsoleApp1.NewFeatures;
+using ConsoleApp1.partial_class;
 
 namespace ConsoleApp1;
 class Program
@@ -34,7 +35,12 @@ class Program
     }
     static void Main(string[] args)
     {
-        ObserverPattern observerPattern = new ObserverPattern();
+        //ObserverPattern observerPattern = new ObserverPattern();
+        Employee emp = new Employee();
+        emp.FirstName = "John";
+        emp.LastName = "Doe";
+        emp.DisplayName();
+        emp.DoWork();
 
         //Solve s = new Solve();
         //_ = new DataAbstraction();

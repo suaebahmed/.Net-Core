@@ -71,6 +71,14 @@ class RadioStation : ISubscriber
     }
 }
 
+class YTChannel : ISubscriber
+{
+    public void Update(string news)
+    {
+        Console.WriteLine($"Youtube Channel received news: {news}");
+    }
+}
+
 public class ObserverPattern
 {
     public ObserverPattern()
@@ -80,15 +88,18 @@ public class ObserverPattern
         Newspaper newspaper = new Newspaper();
         TVChannel tvChannel = new TVChannel();
         RadioStation radioStation = new RadioStation();
+        YTChannel yTChannel = new YTChannel();
 
         agency.Attach(newspaper);
         agency.Attach(tvChannel);
         agency.Attach(radioStation);
+        agency.Attach(yTChannel);
+
 
         agency.ReleaseNews("Breaking News: Observer Pattern in C#");
 
         agency.Detach(radioStation);
-        Console.WriteLine("\nRadio Station unsubscribed.\n");
+        // Console.WriteLine("\nRadio Station unsubscribed.\n");
 
         agency.ReleaseNews("Update: Observer Pattern Example Completed");
     }
