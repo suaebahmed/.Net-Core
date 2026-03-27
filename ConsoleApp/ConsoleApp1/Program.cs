@@ -4,6 +4,7 @@ using System.Text;
 using ConsoleApp1.Coupling;
 using ConsoleApp1.Json;
 using ConsoleApp1.LinqEssential;
+using ConsoleApp1.LinqEssential_Collection;
 using ConsoleApp1.NewFeatures;
 using ConsoleApp1.partial_class;
 
@@ -36,11 +37,11 @@ class Program
     static void Main(string[] args)
     {
         //ObserverPattern observerPattern = new ObserverPattern();
-        Employee emp = new Employee();
-        emp.FirstName = "John";
-        emp.LastName = "Doe";
-        emp.DisplayName();
-        emp.DoWork();
+        //Employee emp = new Employee();
+        //emp.FirstName = "John";
+        //emp.LastName = "Doe";
+        //emp.DisplayName();
+        //emp.DoWork();
 
         //Solve s = new Solve();
         //_ = new DataAbstraction();
@@ -50,6 +51,8 @@ class Program
         //_ = new TightCoupling();
         //_ = new JsonSerializeAndDeserialize();
         //_ = new EssentialLinq();
+        _ = new ExecutionType();
+
         //_ = new Features1(); // enum, switch expression
         //_ = new DataTypesCharp();
 

@@ -1,7 +1,0 @@
-
-## Scaffolding Commands
-
-Scaffold-DbContext -Connection Name=BookStoresDBConnection Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context BookStoresDBContext
-
-
-

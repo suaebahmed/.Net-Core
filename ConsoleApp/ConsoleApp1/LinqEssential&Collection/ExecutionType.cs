@@ -32,15 +32,16 @@ namespace ConsoleApp1.LinqEssential_Collection
 
             list.Add(15);
 
-            foreach ( var x in listFilter)
+            foreach (var x in listFilter)
             {
                 Console.WriteLine(x);
             }
 
             Console.WriteLine("-----------------");
 
-            foreach ( var x in listFilterWithToList) {
-                Console.WriteLine(x); 
+            foreach (var x in listFilterWithToList)
+            {
+                Console.WriteLine(x);
             }
         }
     }

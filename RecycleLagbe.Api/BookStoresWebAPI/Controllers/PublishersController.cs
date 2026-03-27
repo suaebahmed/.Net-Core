@@ -14,20 +14,16 @@ namespace BookStoresWebAPI.Controllers
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class PublishersController : ControllerBase
+    public class PublishersController(BookStoresDBContext context) : ControllerBase
     {
-        private readonly BookStoresDBContext _context;
-
-        public PublishersController(BookStoresDBContext context)
-        {
-            _context = context;
-        }
+        private readonly BookStoresDBContext _context = context;
 
         // GET: api/Publishers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Publisher>>> GetPublishers()
         {
-            return await _context.Publishers.ToListAsync();
+            return await _context.Publishers
+                .ToListAsync();
         }
 
         // GET: api/Publishers/5
@@ -35,11 +31,11 @@ namespace BookStoresWebAPI.Controllers
         public async Task<ActionResult<Publisher>> GetPublisher(int id)
         {
             var publisher = await _context.Publishers
-                                            .Where(pub => pub.PubId == id)
-                                            .FirstOrDefaultAsync();
+                            .Where(pub => pub.PubId == id)
+                            .FirstOrDefaultAsync();
 
             if (publisher == null)
-            {
+            { 
                 return NotFound();
             }
 
